@@ -29,7 +29,7 @@ class User:
             'added_to_attachment_menu':self.added_to_attachment_menu,
             'can_join_groups':self.can_join_groups,
             'can_read_all_group_messages':self.can_read_all_group_messages,
-            'supports_inline_queries':self.supports_inline_queries,
+            'supports_inline_queries':self.supports_inline_queries
         }
         NewDict = {}
         for k,q in data.items():
