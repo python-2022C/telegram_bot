@@ -4,4 +4,5 @@ TOKEN = os.environ['TOKEN']
 
 
 bot = telegram.Bot(TOKEN)
-print(bot.getMe())
+user=bot.getMe()
+print(user.username)
