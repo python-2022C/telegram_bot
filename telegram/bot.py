@@ -27,7 +27,11 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        pass
+        url = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
+        data={'chat_id': chat_id, 'text': text}
+        answer = requests.get(url,data)
+        return answer.json()
+
 
         
     def getUpdates(self):
