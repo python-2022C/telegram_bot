@@ -43,3 +43,10 @@ class Bot:
         Returns:
           A  telegram.Update object is returned.
         """
+        url = f'{self.base_url}/getUpdates'
+        answer = requests.get(url)
+        data = answer.json()
+        # Get result form data
+        result = data['result']    
+    
+        return result
