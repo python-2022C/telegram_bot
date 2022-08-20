@@ -5,6 +5,7 @@
 Bots are third-party applications that run inside Telegram. Users can interact with bots by sending them messages, commands and inline requests. You control your bots using HTTPS requests to Telegram's Bot API.
 
 ## Methods
+
 - [getMe](https://core.telegram.org/bots/api#getme) — Get the bot info
 - [getUpdates](https://core.telegram.org/bots/api#getupdates) — Get updates
 - [sendMessage](https://core.telegram.org/bots/api#sendmessage) — Send a message
