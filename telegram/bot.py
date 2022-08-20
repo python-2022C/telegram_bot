@@ -28,3 +28,12 @@ class Bot:
           A telegram.Message instance representing the message posted.
         """
         pass
+
+        
+    def getUpdates(self):
+        """Use this method to receive incoming updates using long polling.
+        Args:
+            
+        Returns:
+          A  telegram.Update object is returned.
+        """
