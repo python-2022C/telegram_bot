@@ -32,7 +32,7 @@ class User:
             'supports_inline_queries':self.supports_inline_queries,
         }
         NewDict = {}
-        for k,q in data:
+        for k,q in data.items():
             if q != None:
                 NewDict[k] = q
 
