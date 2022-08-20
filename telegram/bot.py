@@ -1,11 +1,11 @@
-from typing import Dict
 import requests
+from .user import User
 
 class Bot:
-    def __init__(self,token:str)->Dict:
+    def __init__(self,token:str)->None:
         self.base_url = f'https://api.telegram.org/bot{token}'
 
-    def getMe(self):
+    def getMe(self)->User:
         """A simple method for testing your bot's auth token.
          Returns:
           A telegram.User instance representing that bot if the
@@ -13,7 +13,9 @@ class Bot:
         """
         url = f'{self.base_url}/getMe'
         r = requests.get(url)
-        return r.json()
+        user_data = r.json()['result']
+        
+        return User(user_data)
 
 
     def sendMessage(self,chat_id,text):
