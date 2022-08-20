@@ -27,7 +27,11 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        pass
+        url = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
+        data={'chat_id': chat_id, 'text': text}
+        answer = requests.get(url,data)
+        return answer.json()
+
 
         
     def getUpdates(self):
@@ -37,3 +41,10 @@ class Bot:
         Returns:
           A  telegram.Update object is returned.
         """
+        url = f'https://api.telegram.org/bot{TOKEN}/getUpdates'
+        answer = requests.get(url)
+        data = answer.json()
+        # Get result form data
+        result = data['result']    
+    
+        return result
