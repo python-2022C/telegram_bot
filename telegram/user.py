@@ -19,7 +19,20 @@ class User:
         Returns:
             dict: dictionary of user data
         '''
-        pass 
+        data = {
+            'id':self.id,
+            'last_name':self.last_name,
+            'username':self.username,
+            'is_bot':self.is_bot,
+            "language_code":self.language_code,
+            'is_premium':self.is_premium,
+            'added_to_attachment_menu':self.added_to_attachment_menu,
+            'can_join_groups':self.can_join_groups,
+            'can_read_all_group_messages':self.can_read_all_group_messages,
+            'supports_inline_queries':self.supports_inline_queries,
+        }
+
+        return data
 
     #Override the __str__ method to print the user data
     def __str__(self):
