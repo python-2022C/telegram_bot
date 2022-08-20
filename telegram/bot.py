@@ -110,7 +110,10 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        pass
+        url = self.base_url+"/sendSticker"
+        data={'chat_id': chat_id, 'sticker':sticker}
+        answer = requests.post(url,data)
+        return answer.json()
 
     def sendLocation(self,
                      chat_id,
