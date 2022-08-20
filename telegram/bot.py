@@ -82,7 +82,7 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        url = self.base_url+"/sendMessage"
+        url = self.base_url+"/sendPhoto"
         data={'chat_id': chat_id, 'text': text,'photo':photo}
         answer = requests.post(url,data)
         return answer.json()
@@ -135,7 +135,10 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        pass
+        url = self.base_url+"/sendLocation"
+        data={'chat_id': chat_id, 'latitude':latitude, 'longitude':longitude}
+        answer = requests.post(url,data)
+        return answer.json()
 
     def sendDocument(self,
                      chat_id,
