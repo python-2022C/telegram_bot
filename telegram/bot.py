@@ -27,7 +27,13 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        pass
+        payload = {
+            'chat_id': chat_id,
+            'text': text
+        }
+
+        url = f'{self.base_url}/sendMessage'
+        r = requests.post(url, payload)
 
         
     def getUpdates(self):
