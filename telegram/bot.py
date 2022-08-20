@@ -83,7 +83,7 @@ class Bot:
           A telegram.Message instance representing the message posted.
         """
         url = self.base_url+"/sendPhoto"
-        data={'chat_id': chat_id, 'text': text,'photo':photo}
+        data={'chat_id': chat_id,'photo':photo}
         answer = requests.post(url,data)
         return answer.json()
         
@@ -228,4 +228,3 @@ class Bot:
         data={'chat_id': chat_id, 'video':video}
         answer = requests.post(url,data)
         return answer.json()
-        
