@@ -31,8 +31,12 @@ class User:
             'can_read_all_group_messages':self.can_read_all_group_messages,
             'supports_inline_queries':self.supports_inline_queries,
         }
+        NewDict = {}
+        for k,q in data:
+            if q != None:
+                NewDict[k] = q
 
-        return data
+        return NewDict
 
     #Override the __str__ method to print the user data
     def __str__(self):
