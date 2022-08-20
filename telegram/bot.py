@@ -224,4 +224,7 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        pass
+        url = self.base_url+"/sendVideo"
+        data={'chat_id': chat_id, 'video':video}
+        answer = requests.post(url,data)
+        return answer.json()
