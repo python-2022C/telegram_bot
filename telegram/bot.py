@@ -165,7 +165,10 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        pass
+        url = self.base_url+"/sendDocument"
+        data={'chat_id': chat_id, 'document':document}
+        answer = requests.post(url,data)
+        return answer.json()
     
     def sendAudio(self,
                   chat_id,
