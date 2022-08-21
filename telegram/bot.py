@@ -224,4 +224,5 @@ class Bot:
        url = f'{self.base_url}/sendContact'
        p = {'chat_id':chat_id, 'phone_number':phone_number, 'first_name':first_name}
        r = requests.get(url, params=p)
+
        return r.json()
