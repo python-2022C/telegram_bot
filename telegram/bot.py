@@ -53,7 +53,7 @@ class Bot:
         data = answer.json()
         
         # Get result form data
-        result = data['result']    
+        result = data['result']
         return result
     
     def sendPhoto(self,
