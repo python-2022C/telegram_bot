@@ -17,7 +17,6 @@ class Bot:
         
         return User(user_data)
 
-
     def sendMessage(self,chat_id,text):
         """Use this method to send text messages.
         Args:
@@ -30,14 +29,11 @@ class Bot:
           A telegram.Message instance representing the message posted.
         """
 
-        url = self.base_url+"/sendMessage"
+        url = f"{self.base_url}/sendMessage"
         data={'chat_id': chat_id, 'text': text}
         answer = requests.post(url,data)
         return answer.json()
 
-
-
-        
     def getUpdates(self):
         """Use this method to receive incoming updates using long polling.
         Args:
@@ -45,17 +41,14 @@ class Bot:
         Returns:
           A  telegram.Update object is returned.
         """
-
-
         url = f'{self.base_url}/getUpdates'
-
         answer = requests.get(url)
         data = answer.json()
-        
+
         # Get result form data
         result = data['result']
         return result
-    
+
     def sendPhoto(self,
                   chat_id,
                   photo,
@@ -82,11 +75,10 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        url = self.base_url+"/sendPhoto"
+        url = f"{self.base_url}/sendPhoto"
         data={'chat_id': chat_id,'photo':photo}
         answer = requests.post(url,data)
         return answer.json()
-        
 
     def sendSticker(self,
                     chat_id,
@@ -110,7 +102,7 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        url = self.base_url+"/sendSticker"
+        url = f"{self.base_url}/sendSticker"
         data={'chat_id': chat_id, 'sticker':sticker}
         answer = requests.post(url,data)
         return answer.json()
@@ -138,7 +130,7 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        url = self.base_url+"/sendLocation"
+        url = f"{self.base_url}/sendLocation"
         data={'chat_id': chat_id, 'latitude':latitude, 'longitude':longitude}
         answer = requests.post(url,data)
         return answer.json()
@@ -165,11 +157,11 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        url = self.base_url+"/sendDocument"
+        url = f"{self.base_url}/sendDocument"
         data={'chat_id': chat_id, 'document':document}
         answer = requests.post(url,data)
         return answer.json()
-    
+
     def sendAudio(self,
                   chat_id,
                   audio,
@@ -195,11 +187,10 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        url = self.base_url+"/sendAudio"
+        url = f"{self.base_url}/sendAudio"
         data={'chat_id': chat_id, 'audio':audio}
         answer = requests.post(url,data)
         return answer.json()
-
 
     def sendVideo(self,
                   chat_id,
@@ -224,7 +215,13 @@ class Bot:
         Returns:
           A telegram.Message instance representing the message posted.
         """
-        url = self.base_url+"/sendVideo"
+        url = f"{self.base_url}/sendVideo"
         data={'chat_id': chat_id, 'video':video}
         answer = requests.post(url,data)
         return answer.json()
+
+    def sendContact(self, chat_id, phone_number, first_name):
+       url = f'{self.base_url}/sendContact'
+       p = {'chat_id':chat_id, 'phone_number':phone_number, 'first_name':first_name}
+       r = requests.get(url, params=p)
+       return r.json()
