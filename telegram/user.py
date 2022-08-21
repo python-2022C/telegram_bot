@@ -43,6 +43,7 @@ class User:
         '''
         Print the user data
         '''
-        pass
-    
-        
+        data = self.fromDict()
+        last_name = data['last_name']
+        username = data['username']
+        return f'Last_name:{last_name},\nUsername{username}'
