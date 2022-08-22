@@ -1,7 +1,8 @@
-
+from .message import Message
 class Update:
     def __init__(self, update) -> None:
-        pass
+        self.update_id = update['update_id']
+        self.message   = Message(update['message'])
 
     
     def fromDict(self)->dict:
@@ -10,7 +11,11 @@ class Update:
         Returns:
             dict: dictionary of user data
         '''
-        pass 
+        update_dict = {
+            'update_id': self.update_id,
+            'message': self.message.fromDict()
+        }
+        return update_dict
 
     #Override the __str__ method to print the user data
     def __str__(self):
