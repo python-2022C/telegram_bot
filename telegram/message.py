@@ -1,7 +1,11 @@
-
+import json
+from .user import User
+from .chat import Chat
 class Message:
     def __init__(self, message) -> None:
-        pass
+        self.message_id  = message['message_id']
+        self.from_user   = User(message['from'])
+        self.chat        = Chat(message['chat'])
 
     def fromDict(self)->dict:
         '''
@@ -9,12 +13,17 @@ class Message:
         Returns:
             dict: dictionary of user data
         '''
-        pass 
+        msg_dict = {
+            'message_id': self.message_id,
+            'from_user': self.from_user.fromDict(),
+            'caht': self.chat.fromDict()
+        }
+        return msg_dict
 
     #Override the __str__ method to print the user data
     def __str__(self):
         '''
         Print the user data
         '''
-        pass
+        return json.dumps(self.fromDict())
     
