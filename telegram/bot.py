@@ -1,5 +1,6 @@
 import requests
 from .user import User
+from .update import Update
 
 class Bot:
     def __init__(self,token:str)->None:
@@ -53,8 +54,13 @@ class Bot:
         data = answer.json()
         
         # Get result form data
-        result = data['result']    
-        return result
+        result = data['result']
+        updates = []
+        if result:
+            for update in result:
+                updates.append(Update(update))
+        
+        return updates
     
     def sendPhoto(self,
                   chat_id,
