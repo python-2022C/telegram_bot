@@ -7,6 +7,7 @@ class Message:
         self.message_id  = message['message_id']
         self.from_user   = User(message['from'])
         self.chat        = Chat(message['chat'])
+        self.text        = message.get('text')
         self.photo       = []
     
         for files in message.get('photo', ''):
@@ -21,8 +22,10 @@ class Message:
         msg_dict = {
             'message_id': self.message_id,
             'from_user': self.from_user.fromDict(),
-            'chat': self.chat.fromDict()
+            'chat': self.chat.fromDict(),
         }
+        if self.text:
+            msg_dict['text'] = self.text
         
         if self.photo:
             list_photos = []
