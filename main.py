@@ -5,5 +5,7 @@ TOKEN = os.environ['TOKEN']
 
 bot = telegram.Bot(TOKEN)
 updates=bot.getUpdates()
-first_update = updates[0]
-print(first_update.message.from_user.last_name)
+last_update = updates[-1]
+chat_id = last_update.message.from_user.id
+text = last_update.message.text
+bot.sendMessage(chat_id, text)
