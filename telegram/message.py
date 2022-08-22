@@ -1,11 +1,17 @@
 import json
 from .user import User
 from .chat import Chat
+from .photosize import PhotoSize
 class Message:
-    def __init__(self, message) -> None:
+    def __init__(self, message: dict) -> None:
         self.message_id  = message['message_id']
         self.from_user   = User(message['from'])
         self.chat        = Chat(message['chat'])
+        photos = message.get('photo')
+        if photos:
+            self.photo = []
+            for files in photos:
+                self.photo.append(PhotoSize(files))
 
     def fromDict(self)->dict:
         '''
@@ -18,6 +24,13 @@ class Message:
             'from_user': self.from_user.fromDict(),
             'caht': self.chat.fromDict()
         }
+        
+        if self.photo:
+            list_photos = []
+            for i in self.photo:
+                list_photos.append(i.fromDict())
+            msg_dict['photo'] = list_photos
+
         return msg_dict
 
     #Override the __str__ method to print the user data
