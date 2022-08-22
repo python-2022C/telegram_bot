@@ -11,4 +11,19 @@ class Chat:
         self.bio = chat_data.get('bio')
 
     def fromDict(self) -> dict:
-        pass
+        chat_dict = {
+            'id': self.id,
+            'type': self.type,
+            'title': self.title,
+            'username': self.username,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'photo': self.photo,
+            'bio': self.bio,
+        }
+        newdict = {}
+        for key, value in chat_dict.items():
+            if value:
+                newdict[key] = value
+
+        return newdict
