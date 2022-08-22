@@ -1,3 +1,4 @@
+import json
 from .user import User
 from .chat import Chat
 class Message:
@@ -24,5 +25,5 @@ class Message:
         '''
         Print the user data
         '''
-        pass
+        return json.dumps(self.fromDict())
     

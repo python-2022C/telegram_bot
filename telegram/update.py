@@ -1,3 +1,4 @@
+import json
 from .message import Message
 class Update:
     def __init__(self, update) -> None:
@@ -22,5 +23,5 @@ class Update:
         '''
         Print the user data
         '''
-        pass
+        return json.dumps(self.fromDict())
     

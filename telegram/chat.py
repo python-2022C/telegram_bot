@@ -1,4 +1,4 @@
-
+import json
 class Chat:
     def __init__(self, chat_data: dict) -> None:
         self.id    = chat_data['id']
@@ -27,3 +27,6 @@ class Chat:
                 newdict[key] = value
 
         return newdict
+
+    def __str__(self) -> str:
+        return json.dumps(self.fromDict())

@@ -4,5 +4,5 @@ TOKEN = os.environ['TOKEN']
 
 
 bot = telegram.Bot(TOKEN)
-user=bot.getMe()
-print(user.username)
+user=bot.getUpdates()
+print(user[0].fromDict())
