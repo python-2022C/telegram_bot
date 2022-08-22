@@ -1,8 +1,10 @@
 from .user import User
+from .chat import Chat
 class Message:
     def __init__(self, message) -> None:
         self.message_id  = message['message_id']
         self.from_user   = User(message['from'])
+        self.chat        = Chat(message['chat'])
 
     def fromDict(self)->dict:
         '''
@@ -12,7 +14,8 @@ class Message:
         '''
         msg_dict = {
             'message_id': self.message_id,
-            'from_user': self.from_user.fromDict()
+            'from_user': self.from_user.fromDict(),
+            'caht': self.chat.fromDict()
         }
         return msg_dict
 
