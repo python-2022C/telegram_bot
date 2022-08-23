@@ -5,5 +5,9 @@ TOKEN = os.environ['TOKEN']
 
 bot = telegram.Bot(TOKEN)
 updates=bot.getUpdates()
-first_update = updates[0]
-print(first_update.message.from_user.last_name)
+last_update = updates[-1]
+chat_id = last_update.message.from_user.id
+p = last_update.message.photo[0]
+bot.sendPhoto(chat_id, p.file_id)
+print(p)
+
