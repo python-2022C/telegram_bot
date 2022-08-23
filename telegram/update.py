@@ -5,7 +5,6 @@ class Update:
         self.update_id = update['update_id']
         self.message   = Message(update['message'])
 
-    
     def fromDict(self)->dict:
         '''
         Convert User object to dictionary
@@ -24,4 +23,3 @@ class Update:
         Print the user data
         '''
         return json.dumps(self.fromDict())
-    

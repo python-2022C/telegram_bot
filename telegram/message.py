@@ -19,6 +19,22 @@ class Message:
         Returns:
             dict: dictionary of user data
         '''
+        if len(self.base_message) > 0:
+            data_messag = self.base_message[-1]['message']['from']
+        data = {
+            'id':data_messag.get('id'),
+            'last_name':data_messag.get('last_name'),
+            'first_name':data_messag.get('first_name'),
+            'username':data_messag.get('username'),
+            'is_bot':data_messag.get('is_bot'),
+            "language_code":data_messag.get('language_code'),
+            'is_premium':data_messag.get('is_premium'),
+            'added_to_attachment_menu':data_messag.get('added_to_attachment_menu'),
+            'can_join_groups':data_messag.get('can_join_groups'),
+            'can_read_all_group_messages':data_messag.get('can_read_all_group_messages'),
+            'supports_inline_queries':data_messag.get('supports_inline_queries'),
+        }
+        
         msg_dict = {
             'message_id': self.message_id,
             'from_user': self.from_user.fromDict(),
@@ -41,4 +57,3 @@ class Message:
         Print the user data
         '''
         return json.dumps(self.fromDict())
-    

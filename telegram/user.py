@@ -47,5 +47,3 @@ class User:
         Print the user data
         '''
         return json.dumps(self.fromDict())
-    
-        
