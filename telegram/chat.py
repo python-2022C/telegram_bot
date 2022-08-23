@@ -23,7 +23,7 @@ class Chat:
         }
         newdict = {}
         for key, value in chat_dict.items():
-            if value:
+            if value != None:
                 newdict[key] = value
 
         return newdict
