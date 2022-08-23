@@ -1,7 +1,11 @@
-
+import json
+from .user import User
+from .chat import Chat
 class Message:
     def __init__(self, message) -> None:
-        self.base_message = message
+        self.message_id  = message['message_id']
+        self.from_user   = User(message['from'])
+        self.chat        = Chat(message['chat'])
 
     def fromDict(self)->dict:
         '''
@@ -25,23 +29,16 @@ class Message:
             'supports_inline_queries':data_messag.get('supports_inline_queries'),
         }
         
-        dictMessag = {}
-        for k,q in data.items():
-            if q != None:
-                dictMessag[k] = q
-
-        return data_messag
+        msg_dict = {
+            'message_id': self.message_id,
+            'from_user': self.from_user.fromDict(),
+            'caht': self.chat.fromDict()
+        }
+        return msg_dict
 
     #Override the __str__ method to print the user data
     def __str__(self):
         '''
         Print the user data
         '''
-        data = self.fromDict()
-
-        id = data.get('id')
-        last_name = data.get('last_name')
-        first_name = data.get('first_name')
-        username = data.get('username')
-
-        return f'id:{id},\nlast_name:{last_name},\nfirst_name:{first_name},\nusername:{username}'
+        return json.dumps(self.fromDict())

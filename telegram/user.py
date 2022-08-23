@@ -1,3 +1,6 @@
+import json
+
+
 class User:
     def __init__(self,user):
         self.id = user.get('id')
@@ -43,7 +46,4 @@ class User:
         '''
         Print the user data
         '''
-        data = self.fromDict()
-        last_name = data['last_name']
-        username = data['username']
-        return f'Last_name:{last_name},\nUsername{username}'
+        return json.dumps(self.fromDict())
